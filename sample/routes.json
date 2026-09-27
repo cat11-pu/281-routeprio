@@ -1,0 +1,12 @@
+{
+  "budget": 2,
+  "queries": ["/a/b", "/a/c", "/a/b/c"],
+  "duplicate_error_code": "E_DUPLICATE_ROUTE",
+  "event_error_code": "E_BAD_EVENT",
+  "state": { "routes": [], "ledger": [], "applied": [] },
+  "events": [
+    { "id": 1, "kind": "add", "pattern": "/a/*", "target": "t1" },
+    { "id": 2, "kind": "add", "pattern": "/a/b", "target": "t2" },
+    { "id": 3, "kind": "add", "pattern": "/*/c", "target": "t3" }
+  ]
+}
