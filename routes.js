@@ -1,8 +1,15 @@
-// routes.js：段切分与匹配判定（基线：一律给空表、一律说不匹配）
+// routes.js：模式切段与匹配判定（斜杠分段，模式段可为 *）
 export function segmentsOf(pattern) {
-  return [];
+  return String(pattern).split("/").filter(function (part) {
+    return part.length > 0;
+  });
 }
 
 export function matches(pattern, path) {
-  return false;
+  const want = segmentsOf(pattern);
+  const got = segmentsOf(path);
+  if (want.length !== got.length) return false;
+  return want.every(function (part, index) {
+    return part === "*" || part === got[index];
+  });
 }
